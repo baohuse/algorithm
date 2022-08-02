@@ -48,12 +48,30 @@ function removeCache(cache, keys, key) {
   remove(keys, key);
 }
 
-
 const cache = new LRUCache(2);
 
 cache.put(1, 1);
 cache.put(2, 2);
 cache.get(1);
-cache.put(3, 3)
+cache.put(3, 3);
 console.log(cache.get(2));
 // console.log(cache.keys);
+
+// 使用数组结构， 每次访问， 或者每次put都更新下最新的这个key，
+
+// 利用 Map 既能保存键值对，并且能够记住键的原始插入顺序
+
+const LRUCache2 = (max) => {
+  this.cache = new Map();
+  this.max = max;
+};
+
+LRUCache2.prototype.get = function (key) {
+
+  if(this.cache.has(key)) {
+    // 
+    return this.cache.get(key)
+  }
+
+  return -1;
+};

@@ -3,17 +3,19 @@
 class Stack {
   constructor() {
     this.items = [];
-    // this.min = null;
+    this.min = null;
   }
 
   // 进栈
   push(item) {
     this.items.push(item);
+    this.min = Math.min(item, ...this.items);
   }
 
   // 出栈
   pop() {
     this.items.pop();
+    this.min = Math.min(...this.items);
   }
 
   // 栈顶元素
@@ -35,6 +37,11 @@ class Stack {
   //
   clear() {
     this.items = [];
+  }
+
+
+  getMin() {
+    return this.min;
   }
 }
 
